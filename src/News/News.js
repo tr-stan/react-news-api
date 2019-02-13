@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Articles from './Articles'
 
 class News extends Component {
 	constructor() {
@@ -13,8 +14,8 @@ class News extends Component {
 
 	    try {
 	        const news = await fetch('https://newsapi.org/v2/everything?q=javascript&apiKey=87eb12bd1bf24ea1bb0002dbd3f32e04');
-	        const newsJson = await news.json();
-	        this.setState({ news: newsJson });
+	        const newsJson = await news.json()
+	        this.setState({ news: newsJson.articles })
 	    } catch (err) {
 	        console.log(err, 'error in catch block')
 	        return err
@@ -28,8 +29,8 @@ class News extends Component {
 	render() {
 	return (
 	  <div className="News">
-	    <h1>Welcome, {this.props.username}!</h1>
-	    
+	    <p>logged in as {this.props.username}</p>
+	    <Articles news={this.state.news} />
 	  </div>
 	)
 	}

@@ -1,21 +1,29 @@
 import React from 'react'
-import { Grid, List, Image } from 'semantic-ui-react'
+import { Grid, List, Segment } from 'semantic-ui-react'
 
 const Articles = (props) => {
     console.log(props)
     const articleList = props.news.map((article, i) => {
         return <List key={i}>
         			<List.Item>
-      					<Grid>
-    						<Grid.Column width={9}>
-    							<List.Header as='a'><a href={article.url}>{article.title}</a></List.Header>
-      							<List.Content>{article.description}</List.Content>
+      					<Grid stackable columns={2}>
+    						<Grid.Column>
+    								<List.Header><a href={article.url}>{article.title}</a></List.Header>
+      								<List.Content>{article.description}</List.Content>
     						</Grid.Column>
-    						<Grid.Column width={5}>
-    							<List.Content>
-      							<List.Icon name='pencil'/>
-      							by {article.author !== null ? article.author: 'unspecified author'}
-      							</List.Content>
+    						<Grid.Column>
+    								<List.Content>
+      								<List.Icon name='pencil'/>
+      								by {article.author !== null ? article.author: 'unspecified author'}
+      								</List.Content>
+      								<List.Content>
+      								<List.Icon name='users'/>
+      								source {article.source.name}
+      								</List.Content>
+      								<List.Content>
+      								<List.Icon name='calendar alternate outline'/>
+      								{new Date(article.publishedAt).toLocaleDateString()}
+      								</List.Content>
     						</Grid.Column>
   						</Grid>
     				</List.Item>
@@ -24,7 +32,6 @@ const Articles = (props) => {
 
     return (
         <div>
-          <h2>JavaScript News</h2>
           <ul>
             {articleList}
           </ul>

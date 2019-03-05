@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Articles from './Articles'
 
 class News extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 
 		this.state = {
 			news: []
@@ -11,10 +11,9 @@ class News extends Component {
 	}
 
 	getNews = async () => {
-
 	    try {
 	        const news = await fetch('https://newsapi.org/v2/everything?q=javascript&apiKey=87eb12bd1bf24ea1bb0002dbd3f32e04');
-	        const newsJson = await news.json()
+	        const newsJson = wait news.json()
 	        this.setState({ news: newsJson.articles })
 	    } catch (err) {
 	        console.log(err, 'error in catch block')
@@ -29,7 +28,7 @@ class News extends Component {
 	render() {
 	return (
 	  <div className="News">
-	    <p>logged in as {this.props.username}</p>
+	    <p>Hi {this.props.username}!</p>
 	    <Articles news={this.state.news} />
 	  </div>
 	)

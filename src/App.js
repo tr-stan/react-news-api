@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Login from './Login/Login';
 import News from './News/News';
 import './App.css';
+import { Container } from 'semantic-ui-react'
 
 class App extends Component {
     constructor() {
@@ -12,7 +13,7 @@ class App extends Component {
             username: '',
         }
     }
-    
+
     login = (username) => {
         this.setState({
             logged: true,
@@ -24,7 +25,8 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div>
+            <h1>JavaScript News</h1>
               {this.state.logged ? <News username={this.state.username}/> : <Login login={this.login}/>}
             </div>
         );
